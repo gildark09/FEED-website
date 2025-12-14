@@ -1,0 +1,552 @@
+/* ================================
+   GLOBAL RESET
+================================ */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ================================
+   BASE / TYPOGRAPHY
+================================ */
+body {
+    font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont,
+                 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    background: #0f172a;            /* dark slate */
+    color: #e5e7eb;                 /* soft white */
+    min-height: 100vh;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* ================================
+   DISPLAY FONT
+================================ */
+@font-face {
+    font-family: 'Barnabey';
+    src: url('BARNABEY.ttf') format('truetype');
+}
+
+
+.cat {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cat-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cat-video { 
+    position: fixed; 
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 100%; 
+    object-fit: cover; 
+    filter: brightness(0.75); 
+    z-index: -1; 
+}
+
+/* ================================
+   HEADER / NAVBAR
+================================ */
+header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding: 14px 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #020617;            /* darker than body */
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    z-index: 100;
+}
+
+.logo {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+}
+
+/* Nav */
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 32px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #cbd5f5;
+    font-size: 1.2rem;
+    font-weight: 600;
+    letter-spacing: 0.4px;
+    transition: color .2s ease;
+}
+
+nav ul li a:hover,
+nav ul li a.active {
+    color: #34d399;                 /* emerald accent */
+}
+
+/* ================================
+   PAGE CENTER
+================================ */
+.page-center {
+    min-height: 100vh;
+    padding-top: 120px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+/* Headline */
+.page-title {
+    font-family: 'Barnabey', serif;
+    font-size: 3.2rem;
+    letter-spacing: 6px;
+    margin-bottom: 40px;
+    color: #f8fafc;
+}
+
+/* ================================
+   BUTTONS / CARDS
+================================ */
+.page-button {
+    background: #020617;
+    color: #e5e7eb;
+    border: 1px solid rgba(255,255,255,0.08);
+    padding: 16px 40px;
+    border-radius: 14px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all .25s ease;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+}
+
+.page-button.large {
+    width: 280px;
+    margin: 12px 0 12px 0;
+}
+
+.page-button:hover {
+    background: #022c22;
+    color: #34d399;
+    border-color: rgba(52,211,153,0.4);
+    transform: translateY(-4px);
+    box-shadow: 0 16px 40px rgba(52,211,153,0.25);
+}
+
+/* ================================
+   PAGE CARDS
+================================ */
+.page-card {
+    width: 360px;
+    background: #020617;
+    padding: 28px;
+    border-radius: 18px;
+    border: 1px solid rgba(255,255,255,0.06);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.7);
+}
+
+.page-card.wider {
+    width: 600px;
+}
+
+.page-card h2 {
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 12px;
+    color: #f8fafc;
+}
+
+/* ================================
+   INPUTS
+================================ */
+.page-input,
+input,
+textarea,
+select {
+    width: 100%;
+    padding: 12px 14px;
+    border-radius: 10px;
+    border: 1px solid rgba(255,255,255,0.1);
+    background: #0f172a;
+    color: #e5e7eb;
+    font-size: 0.95rem;
+    margin-top: 12px;
+}
+
+.page-input::placeholder {
+    color: #64748b;
+}
+
+.page-input:focus,
+input:focus,
+textarea:focus,
+select:focus {
+    outline: none;
+    border-color: #34d399;
+}
+
+/* ================================
+   TABLES
+================================ */
+.page-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 12px;
+    font-size: 0.9rem;
+}
+
+.page-table th {
+    text-align: left;
+    padding: 12px;
+    color: #cbd5f5;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    font-weight: 700;
+}
+
+.page-table td {
+    padding: 12px;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    color: #e5e7eb;
+}
+
+/* ================================
+   DAY SELECTOR
+================================ */
+.day-select {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 12px;
+}
+
+.day-select label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    background: #020617;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #cbd5f5;
+    border: 1px solid rgba(255,255,255,0.06);
+}
+
+.day-select input {
+    accent-color: #34d399;
+}
+
+/* ================================
+   SCHEDULE LIST
+================================ */
+.schedule-list {
+    margin-top: 15px;
+}
+
+.schedule-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #020617;
+    padding: 10px 14px;
+    border-radius: 10px;
+    margin-bottom: 8px;
+    font-size: 0.85rem;
+}
+
+.schedule-item button {
+    background: #ef4444;
+    border: none;
+    padding: 6px 12px;
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.schedule-item button:hover {
+    background: #dc2626;
+}
+
+/* ================================
+   ABOUT PAGE
+================================ */
+.about-page {
+    min-height: 100vh;
+    padding-top: 120px;
+    padding-bottom: 60px;
+    display: flex;
+    justify-content: center;
+}
+
+.about-section {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.about-container {
+    width: 90%;
+    max-width: 850px;
+    background: #020617;
+    border-radius: 20px;
+    padding: 40px 45px;
+    border: 1px solid rgba(255,255,255,0.06);
+    box-shadow: 0 25px 60px rgba(0,0,0,0.7);
+}
+
+/* Titles */
+.about-title {
+    font-family: 'Barnabey', serif;
+    font-size: 3rem;
+    text-align: center;
+    letter-spacing: 5px;
+    margin-bottom: 25px;
+    color: #f8fafc;
+}
+
+.about-subtitle {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #34d399;
+    margin-top: 30px;
+    margin-bottom: 10px;
+}
+
+/* Text */
+.about-text {
+    font-size: 0.95rem;
+    line-height: 1.8;
+    color: #cbd5f5;
+    margin-bottom: 16px;
+}
+
+.about-list li {
+    font-size: 0.95rem;
+    color: #cbd5f5;
+    margin-bottom: 8px;
+}
+
+.about-text a {
+    color: #34d399;
+    font-weight: 600;
+}
+
+.about-text a:hover {
+    text-decoration: underline;
+}
+
+/* ================================
+   SUPPORT PAGE
+================================ */
+.support-container {
+    max-width: 800px;
+    margin: 120px auto 40px;
+    padding: 20px;
+}
+
+.support-section {
+    background: #020617;
+    padding: 20px;
+    border-radius: 14px;
+    border: 1px solid rgba(255,255,255,0.06);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+}
+
+.support-section h2 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: #f8fafc;
+}
+
+.support-section p {
+    font-size: 0.9rem;
+    color: #cbd5f5;
+}
+
+/* ================================
+   MOBILE
+================================ */
+@media (max-width: 768px) {
+
+    header {
+        padding: 12px 20px;
+    }
+
+    nav ul {
+        gap: 14px;
+    }
+
+    nav ul li a {
+        font-size: 0.8rem;
+    }
+
+    .page-title {
+        font-size: 2.2rem;
+        letter-spacing: 4px;
+    }
+
+    .page-button.large {
+        width: 100%;
+    }
+
+    .page-button{
+        padding: 10px 20px;
+        font-size: 0.9rem;
+    }
+    
+    .page-card,
+    .page-card.wider {
+        width: 100%;
+    }
+}
+/* ================================
+   BIG FEED HERO BUTTON
+================================ */
+
+.main-title { 
+    font-family: 'Barnabey', serif; 
+    font-size: 8rem; 
+    letter-spacing: 5px; 
+    color: white; 
+    text-shadow: 0px 4px 20px rgba(0,0,0,0.5); 
+    opacity: 0; 
+    animation: fadeIn 2s ease forwards; 
+}
+
+.feed-button { 
+    color: #f9f9f9;
+    text-shadow: 0 0 35px rgb(184, 241, 212); 
+    text-decoration: none; 
+    transition: 0.3s ease; 
+} 
+
+.feed-button:hover { 
+    transform: scale(1.08); 
+} 
+
+.feed-button:hover 
+.main-title { 
+    color: #f9f9f9;
+    text-shadow: 0 0 35px rgb(184, 241, 212); 
+} @keyframes fadeIn { 
+    to { 
+        opacity: 1; 
+    } }
+
+.feed-hero:hover {
+    color: #34d399;
+    transform: scale(1.08);
+    text-shadow: 0 0 60px rgba(52,211,153,0.6);
+}
+
+
+/* ================================
+   MEMBERS PAGE
+================================ */
+
+.members-page {
+    position: relative;
+    min-height: 100vh;
+    padding-top: 110px;
+    padding-bottom: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.members-section {
+    width: 100%;
+    text-align: center;
+    padding: 0 20px;
+}
+
+.members-title {
+    font-size: 3rem;
+    letter-spacing: 5px;
+    color: #f8fafc;
+    margin-bottom: 10px;
+}
+
+.members-subtitle {
+    font-size: 1rem;
+    color: #34d399;
+    margin-bottom: 40px;
+}
+
+
+.members-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 26px;
+    max-width: 900px;
+    margin: auto;
+}
+
+.member-card {
+    background: rgba(2, 6, 23, 0.9);
+    backdrop-filter: blur(6px);
+    border-radius: 18px;
+    padding: 26px 20px;
+    border: 1px solid rgba(255,255,255,0.06);
+    box-shadow: 0 25px 60px rgba(0,0,0,0.7);
+    transition: transform .3s ease;
+}
+
+.member-card:hover {
+    transform: translateY(-6px);
+}
+
+.member-card img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 14px;
+    border: 3px solid #34d399;
+}
+
+.member-card h3 {
+    font-size: 1.1rem;
+    color: #f8fafc;
+    margin-bottom: 4px;
+}
+
+.member-card p {
+    font-size: 0.85rem;
+    color: #cbd5f5;
+}
+
+/* ================================
+   RESPONSIVE
+================================ */
+
+@media (max-width: 768px) {
+    .members-title {
+        font-size: 2.2rem;
+        letter-spacing: 3px;
+    }
+
+    .member-card {
+        padding: 22px;
+    }
+}

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manual Feed</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+<header>
+    <div class="logo-container">
+        <img src="../image/Moon Lunala.jpg" class="logo" alt="Logo">
+    </div>
+    <nav>
+        <ul>
+            <li><a href="/html/FEED.html">← Back</a></li>
+        </ul>
+    </nav>
+</header>
+
+    <video class="cat-video" autoplay muted loop playsinline>
+      <source src="/image/cat3.mp4" type="video/mp4">
+    </video>
+
+<div class="page-center">
+    <h1 class="page-title">Manual Feed</h1>
+
+    <div class="page-card">
+        <p class="page-text">Press the button to feed instantly.</p>
+
+        <button class="page-button" onclick="sendManualFeed()">Feed Now</button>
+
+        <p id="manual-status" class="status-text"></p>
+    </div>
+</div>
+
+<script>
+let feeding = false;
+
+
+function sendManualFeed() {
+    if (feeding) return; 
+    feeding = true;
+    
+    const status = document.getElementById("manual-status");
+
+    feedPet();
+    
+    saveHistory("Manual");
+
+    
+    status.textContent = "✔ Fed successfully!";
+    status.style.opacity = "1";
+
+    
+    setTimeout(() => {
+        status.style.opacity = "0";
+        setTimeout(() => {
+            status.textContent = "";
+            feeding = false;
+        }, 300);
+    }, 2000);
+}
+
+
+function saveHistory(type) {
+    const now = new Date();
+    const entry = {
+        date: now.toLocaleDateString(),
+        time: now.toLocaleTimeString(),
+        type: type
+    };
+
+    let history = JSON.parse(localStorage.getItem("feedHistory")) || [];
+    history.unshift(entry);
+    localStorage.setItem("feedHistory", JSON.stringify(history));
+}
+</script>
+<script src="../autofeed.js"></script>
+</body>
+</html>

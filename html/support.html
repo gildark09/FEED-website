@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Support</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+
+    <!-- Background -->
+    <video class="cat-video" autoplay muted loop playsinline>
+      <source src="/image/cat3.mp4" type="video/mp4">
+    </video>
+
+    <!-- NAVIGATION -->
+    <header>
+        <img src="../image/Moon Lunala.jpg" class="logo" alt="Logo">
+
+        <nav>
+            <ul>
+                <li><a href="/html/index.html">Home</a></li>
+                <li><a href="/html/about.html">About</a></li>
+                <li><a class="active" href="/html/support.html">Support</a></li>
+                <li><a href="#">Members</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- PAGE CONTENT -->
+    <div class="about-page">
+
+        <section class="about-section">
+            <div class="about-container">
+
+                <h1 class="about-title">Support</h1>
+
+                <p class="about-text">
+                    Welcome to the Support Center!  
+                    Here you can find answers, report problems, or reach out directly.
+                </p>
+
+                <!-- FAQ -->
+                <h2 class="about-subtitle">Frequently Asked Questions</h2>
+
+                <ul class="about-list">
+                    <li><strong>• Feeder is not activating?</strong><br>
+                        Make sure your device is connected to Wi-Fi and powered on.</li>
+
+                    <li><strong>• Scheduled times not working?</strong><br>
+                        Check your device clock and make sure days are selected properly.</li>
+
+                    <li><strong>• History is not updating?</strong><br>
+                        Try clearing local storage or refreshing the browser.</li>
+                </ul>
+
+                <!-- CONTACT CARD -->
+                <h2 class="about-subtitle">Contact Us</h2>
+
+                <div class="page-card" style="width:100%; text-align:left; margin-top:20px;">
+                    <p class="about-text">
+                        • Email: <a href="mailto:support@example.com">support@example.com</a><br>
+                        • Discord: <a href="#">discord.gg/yourserver</a><br>
+                        • Response Time: 24–48 hours
+                    </p>
+                </div>
+
+                <!-- REPORT FORM -->
+                <h2 class="about-subtitle">Report an Issue</h2>
+
+                <div class="page-card" style="width:100%; margin-top:20px;">
+                    <form id="supportForm">
+
+                        <label class="about-text">Your Email</label>
+                        <input type="email" class="page-input" placeholder="example@gmail.com" required>
+
+                        <label class="about-text" style="margin-top:15px;">Describe the Issue</label>
+                        <textarea class="page-input" style="height:120px;" placeholder="What happened?" required></textarea>
+
+                        <button type="submit" class="page-button large" style="margin-top:20px;">
+                            Submit Report
+                        </button>
+                    </form>
+
+                    <p id="supportMessage" style="margin-top:15px; color:#8fd1b8; display:none;">
+                        ✔ Your report was sent. Thank you!
+                    </p>
+                </div>
+
+            </div>
+        </section>
+
+    </div>
+
+    <!-- SCRIPT -->
+    <script>
+        // Fake submit for now
+        document.getElementById("supportForm")?.addEventListener("submit", (e) => {
+            e.preventDefault();
+            document.getElementById("supportMessage").style.display = "block";
+        });
+    </script>
+<script src="../autofeed.js"></script>
+</body>
+</html>

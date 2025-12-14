@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta viewport="width=device-width, initial-scale=1.0">
+    <title>Feeding History</title>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About • FEED</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+  <!-- NAVIGATION BAR -->
+  <header>
+    <div class="logo-container">
+        <img src="../image/Moon Lunala.jpg" class="logo" alt="Logo">
+    </div>
+
+    <nav>
+      <ul>
+        <li><a href="/html/index.html">Home</a></li>
+        <li><a href="/html/about.html" class="active">About</a></li>
+        <li><a href="/html/support.html">Support</a></li>
+        <li><a href="#">Members</a></li>
+      </ul>
+
+      
+    </nav>
+  </header>
+</head>
+<body>
+
+<header>
+    <div class="logo-container">
+        <img src="/image/Moon Lunala.jpg" class="logo">
+    </div>
+    <nav>
+        <ul>
+            <li><a href="feed.html">← Back</a></li>
+        </ul>
+    </nav>
+</header>
+
+<video class="cat-video" autoplay muted loop playsinline>
+    <source src="/image/cat3.mp4" type="video/mp4">
+</video>
+
+<div class="page-center">
+ 
+    <h1 class="page-title">Feeding History</h1>
+
+    <div class="page-card wider">
+        <table class="page-table" id="history-table">
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Time</th>
+                    <th>Type</th>
+                </tr>
+            </thead>
+            <tbody id="history-body">
+                <tr><td colspan="3">Loading...</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <button class="page-button" style="margin-top:20px;" onclick="clearHistory()">
+        Clear History
+    </button>
+</div>
+
+<script>
+function loadHistory() {
+    const history = JSON.parse(localStorage.getItem("feedHistory")) || [];
+    const tbody = document.getElementById("history-body");
+
+    tbody.innerHTML = "";
+
+    if (history.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="3">No history yet.</td></tr>`;
+        return;
+    }
+
+    history.forEach(entry => {
+        const row = document.createElement("tr");
+
+        
+        let feedType = entry.type;
+        if (feedType === "Scheduled") {
+            feedType = "⏱ Scheduled Feed";
+        } else if (feedType === "Manual") {
+            feedType = "🍖 Manual Feed";
+        }
+
+        row.innerHTML = `
+            <td>${entry.date}</td>
+            <td>${entry.time}</td>
+            <td>${feedType}</td>
+        `;
+
+        tbody.appendChild(row);
+    });
+}
+
+function clearHistory() {
+    localStorage.removeItem("feedHistory");
+    loadHistory();
+}
+
+window.onload = loadHistory;
+</script>
+<script src="autofeed.js"></script>
+</body>
+</html>
