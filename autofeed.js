@@ -54,3 +54,33 @@ function feedPet() {
     .then(data => alert("Feeding successful"))
     .catch(err => alert("ESP8266 not reachable"));
 }
+
+
+
+function updateFoodLevel() {
+    fetch(`${ESP_IP}/level`)
+        .then(res => res.json())
+        .then(data => {
+            const level = data.level;
+
+            // update %
+            document.getElementById("foodLevelText").innerText = level + "%";
+
+            // update bar fill
+            document.getElementById("healthFill").style.width = level + "%";
+
+            // change bar color depending on level
+            const bar = document.getElementById("healthFill");
+
+            if (level > 60) bar.style.background = "linear-gradient(90deg, #44ff44, #00cc00)";
+            else if (level > 30) bar.style.background = "linear-gradient(90deg, #ffcc44, #ff8800)";
+            else bar.style.background = "linear-gradient(90deg, #ff4444, #ff0000)";
+        })
+        .catch(err => {
+            document.getElementById("foodLevelText").innerText = "Error";
+            document.getElementById("healthFill").style.width = "0%";
+        });
+}
+
+// update food level every second
+setInterval(updateFoodLevel, 1000);

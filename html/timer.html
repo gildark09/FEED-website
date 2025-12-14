@@ -50,6 +50,9 @@
         
         <h2 class="page-subtitle">Scheduled Times</h2>
         <div id="scheduleList" class="schedule-list"></div>
+
+        
+
     </div>
 </div>
 
@@ -153,6 +156,11 @@ setInterval(() => {
 
             entry.lastFed = currentTime;
 
+            fetch(`${ESP_IP}/feed`)
+            .then(res => res.text())
+            .then(t => console.log("Auto Feed:", t))
+            .catch(err => console.log("ESP ERROR:", err));
+
             console.log("Fed at", currentTime, "on", dayName);
         }
     });
@@ -162,6 +170,6 @@ setInterval(() => {
 }, 1000);
 
 </script>
-<script src="../autofeed.js"></script>
+<script src="../autofeed.js"></script>  
 </body>
 </html>
